@@ -1,44 +1,30 @@
-# Language Detection Configuration
-# Ensures accurate language percentage display on GitHub
+## Linguist Configuration for GitHub Language Stats
 
-# Explicitly set Rust for contracts
+# Rust contracts
 *.rs linguist-language=Rust
 
-# Explicitly set TypeScript for web, client, backend
+# TypeScript/JavaScript
+*.ts linguist-language=TypeScript
 *.tsx linguist-language=TypeScript
-web/*.ts linguist-language=TypeScript
-web/**/*.ts linguist-language=TypeScript
-web/**/*.tsx linguist-language=TypeScript
-client/*.ts linguist-language=TypeScript
-client/**/*.ts linguist-language=TypeScript
-backend/*.ts linguist-language=TypeScript
-backend/**/*.ts linguist-language=TypeScript
+*.js linguist-language=JavaScript
 
-# Exclude vendored dependencies from stats
-node_modules/ linguist-vendored
-**/node_modules/ linguist-vendored
-target/ linguist-vendored
-**/target/ linguist-vendored
+# Exclude dependencies and generated files
+node_modules/** linguist-vendored
+target/** linguist-vendored
+dist/** linguist-generated
+build/** linguist-generated
+.next/** linguist-generated
+coverage/** linguist-generated
 
-# Exclude generated files
-dist/ linguist-generated
-build/ linguist-generated
-.next/ linguist-generated
-coverage/ linguist-generated
-**/.next/ linguist-generated
-
-# Exclude lock files from counting
+# Exclude lock files
 package-lock.json linguist-vendored
 Cargo.lock linguist-vendored
 
-# Exclude environment files
-.env* linguist-vendored
-
-# Mark WASM as generated
+# Exclude build artifacts
 *.wasm linguist-generated
 
-# Mark docs appropriately
+# Exclude environment configs
+.env* linguist-vendored
+
+# Mark documentation
 *.md linguist-documentation
-README.md linguist-documentation
-ARCHITECTURE.md linguist-documentation
-CONTRIBUTING.md linguist-documentation
